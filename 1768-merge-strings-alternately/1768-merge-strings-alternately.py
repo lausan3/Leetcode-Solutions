@@ -1,6 +1,6 @@
 class Solution:
     def mergeAlternately(self, word1: str, word2: str) -> str:
-        # O(n) where n is the length of the smaller string
+        # O(n) where n is the length of the larger string
         
         res = []
         oneLength, twoLength = len(word1), len(word2)
