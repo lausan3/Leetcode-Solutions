@@ -1,0 +1,20 @@
+class Solution:
+    def minBitFlips(self, start: int, goal: int) -> int:
+        start_bits, goal_bits = bin(start)[2:], bin(goal)[2:]
+        len_start_b, len_goal_b = len(start_bits), len(goal_bits)
+
+        # backfill zeroes
+        if len_start_b < len_goal_b:
+            start_bits = ("0" * (len_goal_b - len_start_b)) + start_bits
+        elif len_goal_b < len_start_b:
+            goal_bits = ("0" * (len_start_b - len_goal_b)) + goal_bits
+
+        diff_count = 0
+
+        for s, g in zip(start_bits, goal_bits):
+            if s != g:
+                diff_count += 1
+
+        print(start_bits, goal_bits)
+
+        return diff_count
