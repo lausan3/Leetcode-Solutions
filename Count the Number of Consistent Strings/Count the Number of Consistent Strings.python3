@@ -1,14 +1,18 @@
 class Solution:
     def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
+        # O(m * n + k)
         allowed_letters = {}
         consistent_count = 0
 
+        # O(a) where a = len(allowed)
         for letter in allowed:
             allowed_letters[letter] = True
 
+        # O(n) where n = len(words)
         for word in words:
             consistent = True
 
+            # O(m) where m = max(words)
             for letter in word:
                 if letter not in allowed_letters:
                     consistent = False
