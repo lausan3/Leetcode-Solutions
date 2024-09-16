@@ -3,7 +3,7 @@ class Solution:
         result = []
 
         for asteroid in asteroids:
-            if asteroid > 0:
+            if not result or asteroid > 0 or (result and result[-1] < 0):
                 result.append(asteroid)
             else:
                 while result and asteroid * -1 >= result[-1]:
