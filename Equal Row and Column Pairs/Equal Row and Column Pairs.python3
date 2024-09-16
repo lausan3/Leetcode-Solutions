@@ -1,0 +1,18 @@
+class Solution:
+    def equalPairs(self, grid: List[List[int]]) -> int:
+        # rows and columns c can only be equal if they're the same length.
+        # therefore, we only need to check the top and left edges.
+
+        pairs = 0
+        n = len(grid)
+
+        # check top row
+        for r in range(n):
+            row_to_compare = grid[r]
+            for c in range(n):
+                col_to_compare = [grid[i][c] for i in range(n)]
+
+                if row_to_compare == col_to_compare:
+                    pairs += 1
+
+        return pairs
