@@ -1,30 +1,24 @@
 class Solution:
     def uncommonFromSentences(self, s1: str, s2: str) -> List[str]:
-        s1_words = set()
-        s2_words = set()
+        s1_words = {}
+        s2_words = {}
         result = set()
 
         # O(s1)
         for word in s1.split():
-            if word not in s1_words:
-                s1_words.add(word)
-            else:
-                s1_words.remove(word)
-
+            s1_words[word] = s1_words.get(word, 0) + 1
 
         # O(s2)
         for word in s2.split():
-            if word not in s2_words:
-                s2_words.add(word)
-            else:
-                s2_words.remove(word)
+            s2_words[word] = s2_words.get(word, 0) + 1
+            
 
-        for word in s1_words:
-            if word not in result and word not in s2_words:
+        for word, count in s1_words.items():
+            if count == 1 and word not in result and word not in s2_words:
                 result.add(word)
 
-        for word in s2_words:
-            if word not in result and word not in s1_words:
+        for word, count in s2_words.items():
+            if count == 1 and word not in result and word not in s1_words:
                 result.add(word)        
 
         return list(result)
