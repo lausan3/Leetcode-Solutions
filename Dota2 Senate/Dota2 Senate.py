@@ -17,9 +17,11 @@ class Solution:
             dire_senator = dire.popleft()
 
             if rad_senator < dire_senator:
-                n += 1
+
                 rad.append(n)
             else:
                 dire.append(n)
+
+            n += 1
 
         return "Radiant" if rad else "Dire"
