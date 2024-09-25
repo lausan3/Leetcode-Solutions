@@ -12,7 +12,6 @@ class Solution:
                 num.append(int(mul))
                 mul = result = ""
             elif s[i] == "]":
-                temp = result
                 result += result * (num.pop() - 1)
                 result = st.pop() + result
             else:
