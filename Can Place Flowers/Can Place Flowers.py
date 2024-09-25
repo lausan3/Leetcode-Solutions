@@ -1,5 +1,8 @@
 class Solution:
     def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
+        if n == 0:
+            return True
+
         flowers_to_place = n
 
         for i in range(len(flowerbed)):
@@ -12,4 +15,4 @@ class Solution:
             if flowers_to_place == 0:
                 return True
 
-        return flowers_to_place == 0
+        return False
