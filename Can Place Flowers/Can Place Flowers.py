@@ -12,4 +12,4 @@ class Solution:
             if flowers_to_place == 0:
                 return True
 
-        return False
+        return flowers_to_place == 0
