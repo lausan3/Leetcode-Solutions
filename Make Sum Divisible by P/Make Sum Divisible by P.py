@@ -17,7 +17,6 @@ class Solution:
             index_subarray_to_sum[i] = initial_sum
 
         for i in range(len(nums)):
-            print(index_subarray_to_sum)
             for j, prefix_sum in index_subarray_to_sum.items():
                 if prefix_sum % p == 0:
                     return i
