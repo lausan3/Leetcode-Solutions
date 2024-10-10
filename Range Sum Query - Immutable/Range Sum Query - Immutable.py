@@ -8,7 +8,7 @@ class NumArray:
         print(self.prefix_sum)
 
     def sumRange(self, left: int, right: int) -> int:
-        if left - 1 > 0:
+        if left - 1 >= 0:
             return self.prefix_sum[right] - self.prefix_sum[left-1]
         else: return self.prefix_sum[right]
 
