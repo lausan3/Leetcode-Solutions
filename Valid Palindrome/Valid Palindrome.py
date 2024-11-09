@@ -5,7 +5,7 @@ class Solution:
         s = ''.join(filter(str.isalnum, s.lower()))
 
         while l < r:
-            if sl[l] != sl[r]:
+            if s[l] != s[r]:
                 return False
 
             l += 1
