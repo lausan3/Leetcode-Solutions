@@ -12,7 +12,7 @@ class Solution:
                     left_score += 1
             
             for char in right:
-                if char == "1":
+                if char == "0":
                     right_score += 1
 
             max_score = max(max_score, left_score + right_score)
