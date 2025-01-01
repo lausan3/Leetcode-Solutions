@@ -2,7 +2,7 @@ class Solution:
     def maxScore(self, s: str) -> int:
         max_score = 0
 
-        for i in range(len(s)):
+        for i in range(len(s)-1):
             left, right = s[:i+1], s[i+1:]
 
             left_score = right_score = 0
