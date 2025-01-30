@@ -4,8 +4,8 @@ class Solution:
         max_fish = 0
 
         def dfs(r,c,curr):
-            # if m < r < 0 or n < c < 0:
-            #     return curr
+            if m < r < 0 or n < c < 0:
+                return curr
 
             directions = [(1,0),(-1,0),(0,1),(0,-1)]
 
