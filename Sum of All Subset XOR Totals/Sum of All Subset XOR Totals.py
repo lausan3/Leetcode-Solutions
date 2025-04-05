@@ -4,6 +4,7 @@ class Solution:
         if n == 0:
             return 0
 
+        # O(2^n)
         # Modify a generic generateSubsets function to calculate a running XOR
         def XORSum(i: int, curr_xor: int) -> int:
             if i >= n:
