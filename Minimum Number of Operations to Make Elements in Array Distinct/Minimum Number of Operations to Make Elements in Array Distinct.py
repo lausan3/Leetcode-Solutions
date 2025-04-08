@@ -37,7 +37,7 @@ class Solution:
         # Loop through the array in reverse,
         #    if we've seen the number before, return index / 3
         #    Keep track of numbers we've seen in seen numbers set
-        # Return len(nums) / 3
+        # Return 0 because we didn't see a single duplicate
 
         seen_nums = set()
 
