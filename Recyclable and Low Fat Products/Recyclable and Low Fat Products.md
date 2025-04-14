@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/recyclable-and-low-fat-products/submissions/1606947704/?envType=study-plan-v2&envId=top-sql-50">1757. Recyclable and Low Fat Products</a></h2><h3>Easy</h3><hr><p>Table: <code>Products</code></p>
+<h2><a href="https://leetcode.com/problems/recyclable-and-low-fat-products/submissions/1606952101/?envType=study-plan-v2&envId=top-sql-50">1757. Recyclable and Low Fat Products</a></h2><h3>Easy</h3><hr><p>Table: <code>Products</code></p>
 
 <pre>+-------------+---------+
 | Column Name | Type    |
