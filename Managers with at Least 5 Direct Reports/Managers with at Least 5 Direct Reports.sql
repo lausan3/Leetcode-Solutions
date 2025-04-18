@@ -1,5 +1,10 @@
 # Write your MySQL query statement below
-SELECT e.name
-FROM Employee e
-INNER JOIN Employee m ON e.id = m.managerId
-HAVING COUNT(m.managerId) >= 5;
+SELECT name
+FROM Employee 
+WHERE id IN (
+    -- Get managerIds that appear 5 times or more
+    SELECT managerId
+    FROM Employee
+    GROUP BY managerId
+    HAVING count(managerId) >= 5
+)
