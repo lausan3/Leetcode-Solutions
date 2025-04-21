@@ -6,4 +6,5 @@ SELECT
     ROUND(AVG(reports.age)) AS average_age
 FROM Employees e
 JOIN Employees reports ON e.employee_id = reports.reports_to
-GROUP BY e.employee_id;
+GROUP BY e.employee_id
+ORDER BY e.employee_id ASC;
