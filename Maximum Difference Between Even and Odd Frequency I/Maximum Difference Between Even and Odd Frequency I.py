@@ -10,9 +10,4 @@ class Solution:
         odds = list(filter(lambda x: x % 2 == 1, letter_frequencies))
         evens = list(filter(lambda y: y > 0 and y % 2 == 0, letter_frequencies))
 
-        max_odd, max_even = max(odds), max(evens)
-
-        if max_odd > max_even:
-            return max_odd - min(evens)
-        else:
-            return max_even - min(odds)
+        return max(odds) - min(evens)
