@@ -7,7 +7,12 @@ class Solution:
             letter_frequencies[i] += 1
 
         
-        odds = filter(lambda x: x > 0 and x % 2 == 1, letter_frequencies)
-        evens = filter(lambda y: y > 0 and y % 2 == 0, letter_frequencies)
+        odds = list(filter(lambda x: x % 2 == 1, letter_frequencies))
+        evens = list(filter(lambda y: y > 0 and y % 2 == 0, letter_frequencies))
 
-        return abs(max(odds) - min(evens))
+        max_odd, max_even = max(odds), max(evens)
+
+        if max_odd > max_even:
+            return max_odd - min(evens)
+        else:
+            return max_even - min(odds)
