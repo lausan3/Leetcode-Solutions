@@ -30,6 +30,9 @@ class Solution:
 
             i += 1
 
-        prev.next = curr.next
+        if prev:
+            prev.next = curr.next
+        else:
+            head = None
 
         return head
