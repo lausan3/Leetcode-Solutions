@@ -16,7 +16,7 @@ class Solution:
             aux.append(running_count)
 
         l = r = 0
-        largest_subarray = 0
+        largest_subarray = 1
         while r < len(nums):
             if aux[r] > k:
                 largest_subarray = max(largest_subarray, r - l)
