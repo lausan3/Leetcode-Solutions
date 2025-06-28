@@ -4,25 +4,22 @@ class Solution:
         # create an auxillary array where each element is the running count of its number
         # construct largest array where bounds are at k.
         # return length of this array
+        # Note: Right idea, but doesn't take into account the actual frequencies of the numbers.
 
         # Time: O(n), Space: O(n)
 
-        aux = []
-        count = {}
+        longest_subarray, l = 0, -1
+        freq = Counter()
 
-        for num in nums:
-            running_count = count.get(num, 0) + 1
-            count[num] = running_count
-            aux.append(running_count)
+        for r, num in enumerate(nums):
+            freq[num] += 1
+            
+            while freq[num] > k:
+                l += 1
+                freq[nums[l]] -= 1
+            
+            longest_subarray = max(longest_subarray, r - l)
 
-        l = r = 0
-        largest_subarray = 0
-        while r < len(nums):
-            if aux[r] > k:
-                largest_subarray = max(largest_subarray, r - l)
+        return longest_subarray
 
-                l = r
 
-            r += 1
-
-        return largest_subarray if largest_subarray > 0 else len(nums)
