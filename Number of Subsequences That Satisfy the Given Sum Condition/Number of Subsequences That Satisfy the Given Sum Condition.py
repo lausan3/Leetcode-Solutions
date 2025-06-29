@@ -16,9 +16,9 @@ class Solution:
 
         while l <= r:
             if nums[l] + nums[r] <= target:
-                count += powers[r - l] % mod
+                count += powers[r - l]
                 l += 1
             else:
                 r -= 1
         
-        return count
+        return count % mod
