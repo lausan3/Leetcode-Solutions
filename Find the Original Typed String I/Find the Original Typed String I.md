@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/find-the-original-typed-string-i/submissions/1682791214/?envType=daily-question&envId=2025-07-01">3330. Find the Original Typed String I</a></h2><h3>Easy</h3><hr><p>Alice is attempting to type a specific string on her computer. However, she tends to be clumsy and <strong>may</strong> press a key for too long, resulting in a character being typed <strong>multiple</strong> times.</p>
+<h2><a href="https://leetcode.com/problems/find-the-original-typed-string-i/?envType=daily-question&envId=2025-07-01">3330. Find the Original Typed String I</a></h2><h3>Easy</h3><hr><p>Alice is attempting to type a specific string on her computer. However, she tends to be clumsy and <strong>may</strong> press a key for too long, resulting in a character being typed <strong>multiple</strong> times.</p>
 
 <p>Although Alice tried to focus on her typing, she is aware that she may still have done this <strong>at most</strong> <em>once</em>.</p>
 
