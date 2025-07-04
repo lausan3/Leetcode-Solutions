@@ -4,8 +4,9 @@ class Solution:
 
         def get_next_letter(letter: str) -> str:
             a = ord('a')
+            next_letter = (ord(letter) +  1 - a) % 26
 
-            return chr(a - ord(letter) + 1 % 26 + a)
+            return chr(next_letter + a)
 
         for op in operations:
             if len(word) > k:
