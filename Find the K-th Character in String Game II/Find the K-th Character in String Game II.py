@@ -21,8 +21,6 @@ class Solution:
                     next_letter = get_next_letter(letter)
                     shifted_word += next_letter
 
-                    print(f"{letter=}, {next_letter=}, {shifted_word=}")
-
                 word += shifted_word
 
         return word[k - 1]
