@@ -21,6 +21,9 @@ class Solution:
                     next_letter = get_next_letter(letter)
                     shifted_word += next_letter
 
+                    if len(word) + len(shifted_word) > k:
+                        break
+
                 word += shifted_word
 
         return word[k - 1]
