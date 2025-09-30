@@ -9,7 +9,7 @@ class Solution:
 
         newNums = [0] * (n - 1)
 
-        # O(n^2)
+        # O(n)
         for i in range(n - 1):
             newNums[i] = (nums[i] + nums[i+1]) % 10
 
