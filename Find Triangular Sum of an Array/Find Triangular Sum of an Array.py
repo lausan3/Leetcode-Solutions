@@ -1,5 +1,16 @@
 class Solution:
     def triangularSum(self, nums: List[int]) -> int:
+        # Optimized in-place
+        # Time: O(n^2). Space: O(1) optimized
+        n = len(nums)
+
+        # O(n^2)
+        for i in range(n):
+            for j in range(n - i - 1):
+                nums[j] = (nums[j] + nums[j+1]) % 10
+
+        return nums[0]
+
         # Brute Force
         # Time: O(n^2). Space: O(n^2).
         # n = len(nums)
@@ -14,15 +25,3 @@ class Solution:
         #     newNums[i] = (nums[i] + nums[i+1]) % 10
 
         # return self.triangularSum(newNums)
-
-        # Optimized in-place
-        # Time: O(n). Space: O(1)
-        # O(n)
-        n = len(nums)
-        newNums = nums
-
-        for i in range(n):
-            for j in range(n - i - 1):
-                newNums[j] = (nums[j] + nums[j+1]) % 10
-
-        return newNums[0]
