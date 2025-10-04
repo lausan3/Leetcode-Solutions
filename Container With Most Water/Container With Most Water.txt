@@ -1,0 +1,19 @@
+func maxArea(height []int) int {
+    l := 0
+    r := len(height) - 1
+    maxHeight := 0
+
+    for l < r {
+        possibleHeight := (r - l) * min(height[l], height[r])
+
+        maxHeight = max(maxHeight, possibleHeight)
+
+        if height[l] >= height[r] {
+            r -= 1
+        } else {
+            l += 1
+        }
+    }
+
+    return maxHeight
+}
