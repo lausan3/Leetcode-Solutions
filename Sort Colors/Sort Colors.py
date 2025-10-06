@@ -25,18 +25,14 @@ class Solution:
         r, w, b = 0, 0, len(nums) - 1
 
         while w <= b:
-            # if w < r and nums[w] == 0 and w + 1 < n:
-            #     w += 1
-
             curr = nums[w]
 
             if curr == 0:
                 nums[r], nums[w] = nums[w], nums[r]
                 r += 1
-            # elif curr == 1:
-            #     w += 1
+                w += 1
+            elif curr == 1:
+                w += 1
             elif curr == 2:
                 nums[b], nums[w] = nums[w], nums[b]
                 b -= 1
-            
-            w += 1
