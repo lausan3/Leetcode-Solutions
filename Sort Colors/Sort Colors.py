@@ -19,10 +19,13 @@ class Solution:
 
         # 2. More complex three pointer O(n) time true O(1) space solution
         # pointers for where to swap numbers
+        n = len(nums)
+        if n < 2: return
+
         r, w, b = 0, 0, len(nums) - 1
 
-        while w < len(nums) and w <= b:
-            if w < r and nums[w] == 0:
+        while w <= b:
+            if w < r and nums[w] == 0 and w + 1 < n:
                 w += 1
 
             curr = nums[w]
