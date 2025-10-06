@@ -21,7 +21,7 @@ class Solution:
         # pointers for where to swap numbers
         r, w, b = 0, 0, len(nums) - 1
 
-        while w <= b:
+        while w < len(nums) and w <= b:
             if w < r and nums[w] == 0:
                 w += 1
 
