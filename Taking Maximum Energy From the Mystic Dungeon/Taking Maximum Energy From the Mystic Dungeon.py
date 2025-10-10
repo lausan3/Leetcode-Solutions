@@ -1,17 +1,16 @@
 class Solution:
-    def peakIndexInMountainArray(self, arr: List[int]) -> int:
-        # O(log n) binary search solution
-        n = len(arr)
-        l, r = 0, n - 1
+    def maximumEnergy(self, energy: List[int], k: int) -> int:
+        # brute force O(n^2)
+        n = len(energy)
 
-        while l < r:
-            m = (l + r) // 2
+        memo = { i : energy[i] for i in range(n) }
 
-            # peak is after middle - search right half
-            if arr[m] < arr[m + 1]:
-                l = m + 1
-            # peak is before middle - search left half
-            else:
-                r = m
+        # O(n)
+        for i in range(n):
+            start = i % k
 
-        return l
+            memo[start] += energy[i]
+
+        print(memo)
+
+        return max([ x[1] for x in memo.items() ])
