@@ -1,16 +1,18 @@
 class Solution:
     def maximumEnergy(self, energy: List[int], k: int) -> int:
-        # brute force O(n^2)
+        # brute force O(n) space O(1)
         n = len(energy)
 
-        memo = { i : energy[i] for i in range(n) }
+        result = -inf
 
         # O(n)
-        for i in range(n):
-            start = i % k
+        for i in range(n - k, n):
+            running_energy = 0
+            j = i
 
-            memo[start] += energy[i]
-
-        print(memo)
-
-        return max([ x[1] for x in memo.items() ])
+            while j >= 0:
+                running_energy += energy[j]
+                result = max(result, running_energy)
+                j -= k
+        
+        return result
