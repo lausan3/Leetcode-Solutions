@@ -10,8 +10,16 @@ class Solution:
         if grid[0][0] == 0:
             q.append((0, 0, 1))
 
-        # down, downleft, downright, right, upleft, upright
-        directions = [(1, 0), (1, -1), (1, 1), (0, 1), (-1, -1), (-1, 1)]
+            [
+                [0,1,1,0,1],
+                [0,1,0,1,0],
+                [0,1,0,1,0],
+                [1,0,1,1,0],
+                [1,1,1,1,0]
+            ]
+
+        # down, downleft, downright, right, upleft, upright, up, left
+        directions = [(1, 0), (1, -1), (1, 1), (0, 1), (-1, -1), (-1, 1), (-1, 0), (0, -1)]
         visited: set[tuple[int, int]] = set()
 
         while q:
