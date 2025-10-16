@@ -6,7 +6,7 @@ class Solution:
         last_seen = {}
 
         for r, char in enumerate(s):
-            if char in last_seen:
+            if char in last_seen and last_seen[char] >= l:
                 l = last_seen[char] + 1
             
             last_seen[char] = r
