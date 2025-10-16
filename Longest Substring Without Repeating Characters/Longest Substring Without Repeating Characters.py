@@ -9,9 +9,9 @@ class Solution:
         for r in range(len(s)):
             if s[r] in seen:
                 seen.clear()
-                longest = max(longest, r - l)
                 l = r
-            
+
+            longest = max(longest, r - l + 1)
             seen.add(s[r])
 
         return longest
