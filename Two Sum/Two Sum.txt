@@ -1,0 +1,15 @@
+func twoSum(nums []int, target int) []int {
+    complement_to_index := map[int]int{}
+
+    for i, num := range nums {
+        complement := target - num
+
+        if complement_i, ok := complement_to_index[num]; ok == true {
+            return []int{i, complement_i}
+        } else {
+            complement_to_index[complement] = i
+        }
+    }
+
+    return []int{0, 0}
+}
