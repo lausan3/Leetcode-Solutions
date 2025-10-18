@@ -9,7 +9,7 @@ class Solution:
             for c in range(n):
                 if board[r][c] == word[0]:
                     next_index = 1
-                    q.append( ( r, c, next_index, set((r,c)) ) )
+                    q.append( ( r, c, next_index, set([ (r,c) ]) ) )
 
         # coordinates and amount of letters left to search
         # up, down, left, right
