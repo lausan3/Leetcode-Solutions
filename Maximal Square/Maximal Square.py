@@ -25,17 +25,19 @@ class Solution:
             for c in range(n):
                 cell = matrix[r][c]
 
-                if cell == "1":
-                    if (
-                        r > 0 and c > 0 and
-                        matrix[r-1][c] == "1" and # top
-                        matrix[r][c-1] == "1" and # left
-                        matrix[r-1][c-1] == "1"   # top left
-                    ):
-                        memo[r][c] = min(memo[r-1][c], memo[r][c-1], memo[r-1][c-1]) + 1
-                    else:
-                        memo[r][c] = 1
+                if cell != "1":
+                    continue
 
-                    max_length = max(max_length, memo[r][c])
+                if (
+                    r > 0 and c > 0 and
+                    matrix[r-1][c] == "1" and # top
+                    matrix[r][c-1] == "1" and # left
+                    matrix[r-1][c-1] == "1"   # top left
+                ):
+                    memo[r][c] = min(memo[r-1][c], memo[r][c-1], memo[r-1][c-1]) + 1
+                else:
+                    memo[r][c] = 1
+
+                max_length = max(max_length, memo[r][c])
         
         return max_length * max_length
