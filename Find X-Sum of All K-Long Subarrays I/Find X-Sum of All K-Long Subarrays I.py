@@ -3,7 +3,7 @@ class Solution:
         """
         Brute force solution:
          Do exactly what the description says.
-         This yields a solution of O(n log n) time complexity and O(n) space complexity
+         This yields a solution of O(n^2 log n) time complexity and O(n) space complexity
         """
         n = len(nums)
         answer = [0] * (n - k + 1)
@@ -26,6 +26,7 @@ class Solution:
         # O(n)
         for i in range(len(answer)):
             # calculate x-sum
+            # O(n log n)
             x_sum = calculate_x_sum(nums[i:i + k])
 
             answer[i] = x_sum
