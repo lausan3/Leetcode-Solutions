@@ -11,15 +11,12 @@ class Solution:
             indegree[course] += 1
 
         q = deque( [ i for i in range(numCourses) if indegree[i] == 0 ] )
-        visited = set()
+        order = []
 
         while q:
             pre = q.popleft()
 
-            if pre in visited:
-                return []
-
-            visited.add(pre)
+            order.append(pre)
 
             for course in adj[pre]:
                 indegree[course] -= 1
@@ -27,4 +24,4 @@ class Solution:
                 if indegree[course] == 0:
                     q.append(course)
 
-        return list(visited)
+        return order if len(order) == numCourses else []
