@@ -72,6 +72,10 @@ class Solution:
                 for every prereq, dfs into it
 
                 reset state by removing the course from visited
+                save recomputation time by removing the prereqs in the course and checking
+                 for checking for empty prereq lists
+            
+            return true if we haven't returned false yet
         """
         adj_list = { i : [] for i in range(numCourses)}  # course number : prerequesites
 
@@ -94,7 +98,7 @@ class Solution:
                 if not dfs(pre): return False
 
             visited.remove(course)
-            # adj_list[course] = []   # visited all course prereqs, so reset the prereqs list
+            adj_list[course] = []   # visited all course prereqs, so reset the prereqs list
             return True
 
         for course in range(numCourses):
