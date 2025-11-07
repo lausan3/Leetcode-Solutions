@@ -17,7 +17,7 @@ class Solution:
             if from_i >= leng:
                 return
 
-            for j in range(end + 1, from_i, -1):
+            for j in range(end, from_i, -1):
                 nums1[j], nums1[j - 1] = nums1[j - 1], nums1[j]
 
         # O(n)
