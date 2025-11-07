@@ -76,6 +76,9 @@ class Solution:
                  for checking for empty prereq lists
             
             return true if we haven't returned false yet
+
+        Time: O(V + E)
+        Space: O(V)
         """
         # adj_list = { i : [] for i in range(numCourses)}  # course number : prerequesites
 
