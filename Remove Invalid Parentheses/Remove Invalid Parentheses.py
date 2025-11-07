@@ -5,7 +5,7 @@ class Solution:
 
         We backtrack for the following cases:
             1. character is not valid, consider the character in ending string
-            2. character is not valid, don't consider character in ending string
+            2. character is valid, but we skip it
             3. character is "(", consider it
             4. character is ")" and is matched, consider it
 
@@ -43,7 +43,7 @@ class Solution:
 
                 curr.pop()
             else:
-                backtrack(i + 1, curr, left_count, right_count, removal_count + 1) # skip current non parentheses char
+                backtrack(i + 1, curr, left_count, right_count, removal_count + 1) # skip current parentheses
 
                 curr.append(char)
 
