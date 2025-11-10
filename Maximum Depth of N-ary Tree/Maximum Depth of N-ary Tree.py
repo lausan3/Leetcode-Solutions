@@ -13,6 +13,9 @@ class Solution:
 
         while q:
             node, height = q.popleft()
+            
+            if not node:
+                continue
 
             max_height_seen = max(max_height_seen, height)
 
