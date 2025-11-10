@@ -3,25 +3,31 @@ class Solution:
         """
         Brute force approach:
 
-        Maintain a sorted list and use binary search to find update points.
+            Sort the list by weight,
+            maintain a pointer at the start and end,
+                if their sum is <= limit, adjust both pointers
+                else append the larger weight
 
         Time: O(n log n)
-        Space: O(n)
+        Space: O(log n), maximum n / 2 boats
         """
-        boats = SortedList()
+        boats = []
 
-        # O(n)
-        for weight in people:
-            # O(log n)
-            i = boats.bisect_left(weight)
+        l, r = 0, len(people) - 1
+        weights = sorted(people)
 
-            if i >= len(boats):
-                # O(log n)
-                boats.add(limit - weight)
+        while l <= r:
+            left, right = weights[l], weights[r]
+
+            if left + right <= limit:
+                boats.append(limit - left - right)
+                l += 1
+                r -= 1
+            elif left > right:
+                boats.append(limit - left)
+                l += 1
             else:
-                # O(log n)
-                old_weight = boats.pop(i)
-                # O(log n)
-                boats.add(old_weight - weight)
+                boats.append(limit - right)
+                r -= 1
 
         return len(boats)
