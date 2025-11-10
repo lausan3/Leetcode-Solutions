@@ -1,16 +1,27 @@
 class Solution:
     def numRescueBoats(self, people: List[int], limit: int) -> int:
+        """
+        Brute force approach:
+
+        Maintain a sorted list and use binary search to find update points.
+
+        Time: O(n log n)
+        Space: O(n)
+        """
         boats = SortedList()
 
+        # O(n)
         for weight in people:
-            i = boats.bisect_right(weight)
+            # O(log n)
+            i = boats.bisect_left(weight)
 
             if i >= len(boats):
-                boats.add(weight)
+                # O(log n)
+                boats.add(limit - weight)
             else:
-                old_weight = boats.pop(i - 1)
+                # O(log n)
+                old_weight = boats.pop(i)
+                # O(log n)
                 boats.add(old_weight - weight)
-
-            print(f"Added {weight}. {boats=}")
 
         return len(boats)
