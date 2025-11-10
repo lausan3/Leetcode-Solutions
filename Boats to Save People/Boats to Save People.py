@@ -9,9 +9,9 @@ class Solution:
                 else append the larger weight
 
         Time: O(n log n)
-        Space: O(log n), maximum n / 2 boats
+        Space: O(n), sort takes O(n) space in python
         """
-        boats = []
+        boats = 0
 
         l, r = 0, len(people) - 1
         weights = sorted(people)
@@ -20,14 +20,13 @@ class Solution:
             left, right = weights[l], weights[r]
 
             if left + right <= limit:
-                boats.append(limit - left - right)
                 l += 1
                 r -= 1
             elif left > right:
-                boats.append(limit - left)
                 l += 1
             else:
-                boats.append(limit - right)
                 r -= 1
 
-        return len(boats)
+            boats += 1
+
+        return boats
