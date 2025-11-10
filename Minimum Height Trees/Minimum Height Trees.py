@@ -25,6 +25,7 @@ class Solution:
             max_height_seen = 0
             visited = set()
 
+            visited.add(rooted_at_node)
             while q:
                 node, height = q.popleft()
 
@@ -34,7 +35,7 @@ class Solution:
                 for adj in graph[node]:
                     if adj in visited:
                         continue
-
+                    visited.add(adj)
                     q.append( (adj, height + 1) )
 
             return max_height_seen
