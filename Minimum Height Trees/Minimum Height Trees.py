@@ -10,48 +10,92 @@ class Solution:
                 keep track of the root value and its height, only keeping minimums
         
         Time: O(V * V + E)
+
+        Note: This WOULD work if there wasn't a time constraint.
         """
-        graph = { i : set() for i in range(n) }
+        # graph = { i : set() for i in range(n) }
 
-        # populate graph/adjacency list
-        # O(E)
-        for a, b in edges:
-            graph[a].add(b)
-            graph[b].add(a)
+        # # populate graph/adjacency list
+        # # O(E)
+        # for a, b in edges:
+        #     graph[a].add(b)
+        #     graph[b].add(a)
 
-        # O(V)
-        def determine_height(rooted_at_node: int) -> int:
-            q = deque([ (rooted_at_node, 0) ]) # node value, height
-            max_height_seen = 0
-            visited = set()
+        # # O(V)
+        # def determine_height(rooted_at_node: int) -> int:
+        #     q = deque([ (rooted_at_node, 0) ]) # node value, height
+        #     max_height_seen = 0
+        #     visited = set()
 
-            visited.add(rooted_at_node)
-            while q:
-                node, height = q.popleft()
+        #     while q:
+        #         node, height = q.popleft()
 
-                visited.add(node)
-                max_height_seen = max(max_height_seen, height)
+        #         visited.add(node)
+        #         max_height_seen = max(max_height_seen, height)
 
-                for adj in graph[node]:
-                    if adj in visited:
-                        continue
-                    visited.add(adj)
-                    q.append( (adj, height + 1) )
+        #         for adj in graph[node]:
+        #             if adj in visited:
+        #                 continue
 
-            return max_height_seen
+        #             q.append( (adj, height + 1) )
 
-        min_height = float("inf")
-        roots_with_min = []
+        #     return max_height_seen
 
-        # O(V)
-        for root in range(n):
-            # O(V)
-            height = determine_height(root)
+        # min_height = float("inf")
+        # roots_with_min = []
 
-            if height < min_height:
-                min_height = height
-                roots_with_min = [root]
-            elif height == min_height:
-                roots_with_min.append(root)
+        # # O(V)
+        # for root in range(n):
+        #     # O(V)
+        #     height = determine_height(root)
 
-        return roots_with_min
+        #     if height < min_height:
+        #         min_height = height
+        #         roots_with_min = [root]
+        #     elif height == min_height:
+        #         roots_with_min.append(root)
+
+        # return roots_with_min
+
+        """
+        Optimal Topological Sort Approach (from editorial):
+
+        Essentially, we can imagine each tree/graph as a circle. We can minimize the height of the
+         graph by finding the centroid of this circle using a modified version of topo sort.
+        """
+        # edge cases
+        if n <= 2:
+            return [i for i in range(n)]
+
+        # Build the graph with the adjacency list
+        neighbors = [set() for i in range(n)]
+        for start, end in edges:
+            neighbors[start].add(end)
+            neighbors[end].add(start)
+
+        # Initialize the first layer of leaves
+        leaves = []
+        for i in range(n):
+            if len(neighbors[i]) == 1:
+                leaves.append(i)
+
+        # Trim the leaves until reaching the centroids
+        remaining_nodes = n
+        while remaining_nodes > 2:
+            remaining_nodes -= len(leaves)
+            new_leaves = []
+            # remove the current leaves along with the edges
+            while leaves:
+                leaf = leaves.pop()
+                # the only neighbor left for the leaf node
+                neighbor = neighbors[leaf].pop()
+                # remove the only edge left
+                neighbors[neighbor].remove(leaf)
+                if len(neighbors[neighbor]) == 1:
+                    new_leaves.append(neighbor)
+
+            # prepare for the next round
+            leaves = new_leaves
+
+        # The remaining nodes are the centroids of the graph
+        return leaves
