@@ -1,4 +1,4 @@
-<h3><a href=https://leetcode.com/problems/maximum-number-of-ones/?envType=weekly-question&envId=2025-11-01>Maximum Number of Ones</a></h3>
+<h3><a href=https://leetcode.com/problems/maximum-number-of-ones/editorial/?envType=weekly-question&envId=2025-11-01>Maximum Number of Ones</a></h3>
 <p><p>Consider a matrix <code>M</code> with dimensions <code>width * height</code>, such that every cell has value <code>0</code>&nbsp;or <code>1</code>, and any <strong>square</strong>&nbsp;sub-matrix of <code>M</code> of size <code>sideLength * sideLength</code>&nbsp;has at most <code>maxOnes</code>&nbsp;ones.</p>
 
 <p>Return the maximum possible number of ones that the matrix <code>M</code> can have.</p>
