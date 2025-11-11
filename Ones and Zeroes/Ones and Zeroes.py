@@ -1,32 +1,20 @@
 class Solution:
     def findMaxForm(self, strs: List[str], m: int, n: int) -> int:
-        idx_to_freq = {} # index -> (zero count, ones count)
-
-        # count 0s and 1s
-        count = 0
-        
-        for i, s in enumerate(strs):
-            if len(s) > m + n:
-                continue
-
-            z = o = 0
+        def count_z_o(s: str) -> List[int]:
+            c = [0] * 2
 
             for char in s:
-                match char:
-                    case '0':
-                        z += 1
-                    case '1':
-                        o += 1
+                c[ord(char) - ord('0')] += 1
 
-            idx_to_freq[i] = (z, o)
+            return c
 
-        freqs_sorted = sorted(idx_to_freq.values())
-        z = o = 0
+        dp = [[0] * (n + 1) for _ in range(m + 1)]
 
-        for zer, one in freqs_sorted:
-            if z + zer <= m and o + one <= n:
-                z += zer
-                o += one
-                count += 1
+        for s in strs:
+            count = count_z_o(s)
 
-        return count
+            for i in range(m, count[0] - 1, -1):
+                for j in range(n, count[1] - 1, -1):
+                    dp[i][j] = max(1 + dp[i - count[0]][j - count[1]], dp[i][j])
+
+        return dp[m][n]
