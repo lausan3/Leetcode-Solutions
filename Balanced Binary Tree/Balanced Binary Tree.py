@@ -23,4 +23,8 @@ class Solution:
 
             return max(left_depth, right_depth)
 
-        return longest_depth(root.left) - longest_depth(root.right) <= 1
+        return (
+            abs(longest_depth(root.left) - longest_depth(root.right)) <= 1
+            and self.isBalanced(root.left)
+            and self.isBalanced(root.right)
+        )
