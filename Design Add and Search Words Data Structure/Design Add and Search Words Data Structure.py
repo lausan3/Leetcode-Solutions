@@ -50,9 +50,7 @@ class WordDictionary:
             if not temp.children[j]:
                 return False
 
-            temp = temp.children[j]
-
-        return True
+            return self.dfs(i + 1, temp.children[j], word)
 
 # Your WordDictionary object will be instantiated and called as such:
 # obj = WordDictionary()
