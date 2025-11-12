@@ -18,4 +18,11 @@ class Solution:
 
             return same(p.left, q.left) and same(p.right, q.right)
 
-        return same(root, subRoot) or same(root.left, subRoot) or same(root.right, subRoot)
+        if not root:
+            return False
+        elif not subRoot:
+            return True
+        elif same(root, subRoot):
+            return True
+
+        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
