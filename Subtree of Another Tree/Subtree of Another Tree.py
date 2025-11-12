@@ -18,4 +18,7 @@ class Solution:
 
             return same(p.left, q.left) and same(p.right, q.right)
 
+        if root and subRoot and root.val == subRoot.val:
+            return True
+
         return same(root.left, subRoot) or same(root.right, subRoot)
