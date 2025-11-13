@@ -12,7 +12,7 @@ class Solution:
 
         the solution is memo[n - 1]
 
-        Time: O(n * m * s) where s = len(s) (n in code) and m = len(wordDict)
+        Time: O(n * m * s) where s = len(s) (n in code) and m = len(wordDict) and s = average length of words in wordDict
         Space: O(s)
         """
         n = len(s)
