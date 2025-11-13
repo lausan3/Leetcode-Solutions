@@ -5,6 +5,8 @@ class Solution:
         res = []
         curr = []
 
+        nums.sort()
+
         def backtrack(i: int) -> None:
             if i == n:
                 if curr not in res:
