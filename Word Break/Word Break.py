@@ -1,21 +1,31 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         """
-        Brute force Two Pointer solution:
+        Bottom-Up Iterative DP solution:
 
-        init 2 pointers at 0
+        init memo = [False] * n
 
-        move right pointer until we find a word in wordDict
-        adjust pointer as necessary
+        for every index i that matches a word's length in wordDict or we have
+         calculated a previous part of s that matched a word,
+            if the word we construct from s matches a word in wordDict, 
+                mark that index as true
 
-        answer is if r - l pointer is 0 (no excess letters)
+        the solution is memo[n - 1]
+
+        Time: O(n * m * s) where s = len(s) (n in code) and m = len(wordDict)
+        Space: O(n)
         """
-        l = r = 0
+        n = len(s)
+        memo = [False] * n
 
-        while r < len(s):
-            if s[l:r + 1] in wordDict:
-                l = r + 1
+        for i in range(n):
+            for word in wordDict:
+                if i < len(word) - 1:
+                    continue
 
-            r += 1
+                if i == len(word) - 1 or memo[i - len(word)]:
+                    if s[i - len(word) + 1 : i + 1] == word:
+                        memo[i] = True
+                        break
 
-        return r - l == 0
+        return memo[n - 1]
