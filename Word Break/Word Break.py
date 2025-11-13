@@ -13,7 +13,7 @@ class Solution:
         the solution is memo[n - 1]
 
         Time: O(n * m * s) where s = len(s) (n in code) and m = len(wordDict)
-        Space: O(n)
+        Space: O(s)
         """
         n = len(s)
         memo = [False] * n
