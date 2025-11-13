@@ -8,16 +8,15 @@ class Solution:
         nums.sort()
 
         def backtrack(i: int) -> None:
-            if i == n:
-                if curr not in res:
-                    res.append(curr.copy())
-                return
+            res.append(curr.copy())
 
-            curr.append(nums[i])
-            backtrack(i + 1)
+            for j in range(i, n):
+                if j > i and nums[j] == nums[j - 1]:
+                    continue  # skip duplicates
 
-            curr.pop()
-            backtrack(i + 1)
+                curr.append(nums[j])
+                backtrack(j + 1)
+                curr.pop()
 
         backtrack(0)
 
