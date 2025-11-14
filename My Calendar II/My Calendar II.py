@@ -1,26 +1,39 @@
 class MyCalendarTwo:
+    """
+    Using line-sweep technique, we can effectively calculate any double bookings and extend it if needed.
+
+    Essentially, the line-sweep technique involves keeping a number line of starts (+1) and ends (-1),
+        then performing a prefix sum over the number line to see the number of overlaps.
+
+    Time: O(n)
+    Space: O(n)
+    """
 
     def __init__(self):
-        self.bookings = []  # all bookings
-        self.overlaps = []  # double overlaps
+        self.bookings = sortedcontainers.SortedDict()
+        self.max_overlaps = 2
 
+    # O(n) where n = len(bookings)
     def book(self, startTime: int, endTime: int) -> bool:
-        for start, end in self.overlaps:
-            if self.does_overlap(start, end, startTime, endTime):
+        self.bookings[startTime] = self.bookings.get(startTime, 0) + 1
+        self.bookings[endTime] = self.bookings.get(endTime, 0) - 1
+
+        overlaps = 0
+
+        for count in self.bookings.values():
+            overlaps += count  # prefix sum
+
+            if overlaps > self.max_overlaps:
+                # rollback
+                self.bookings[startTime] -= 1
+                self.bookings[endTime] += 1
+
+                if self.bookings[startTime] == 0:
+                    del self.bookings[startTime]
+
                 return False
 
-        for start, end in self.bookings:
-            if self.does_overlap(start, end, startTime, endTime):
-                self.overlaps.append(self.get_overlap(start, end, startTime, endTime))
-
-        self.bookings.append((startTime, endTime))
         return True
-
-    def does_overlap(self, start1, end1, start2, end2) -> bool:
-        return max(start1, start2) < min(end1, end2)
-
-    def get_overlap(self, start1, end1, start2, end2) -> tuple:
-        return (max(start1, start2), min(end1, end2))
 
 # Your MyCalendarTwo object will be instantiated and called as such:
 # obj = MyCalendarTwo()
