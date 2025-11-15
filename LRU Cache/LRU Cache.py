@@ -30,8 +30,8 @@ class LRUCache:
 
     def put(self, key: int, value: int) -> None:
         if key in self.cache:
-            self.cache[key].value = value
-            return
+            old = self.cache[key]
+            self.remove(old)
 
         if len(self.cache) == self.cap:
             # evict
