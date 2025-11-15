@@ -7,7 +7,7 @@ class Solution:
         2. Insert new intervals and fix overlaps
         3. Insert remaining intervals
 
-    Time: O(n)
+    Time: O(n)          l
     Space: O(n)
     """
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
@@ -16,7 +16,7 @@ class Solution:
         new_start, new_end = newInterval
         i = 0
 
-        while i < n and max(intervals[i][0], new_start) > min(intervals[i][1], new_end):
+        while i < n and intervals[i][1] < new_start:
             res.append(intervals[i])
             i += 1
 
