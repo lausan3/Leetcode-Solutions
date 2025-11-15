@@ -33,7 +33,12 @@ class LRUCache:
             old = self.cache[key]
             self.remove(old)
 
-        if len(self.cache) == self.cap:
+        new_node = ListNode(key, value)
+        self.cache[key] = new_node
+
+        self.add(new_node)
+
+        if len(self.cache) > self.cap:
             # evict
             lru = self.head.next
 
@@ -41,11 +46,6 @@ class LRUCache:
                 self.remove(lru)
 
             del self.cache[lru.key]
-
-        new_node = ListNode(key, value)
-        self.cache[key] = new_node
-
-        self.add(new_node)
 
 
     def add(self, node):
