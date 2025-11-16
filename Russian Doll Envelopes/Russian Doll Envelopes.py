@@ -10,9 +10,9 @@ class Solution:
 
         for i in range(1, n):
             for j in range(n):
-                if envelope[j][0] < envelope[i][0] and envelope[j][1] < envelope[j][1]:
+                if envelopes[j][0] < envelopes[i][0] and envelopes[j][1] < envelopes[i][1]:
                     dp[i] = max(dp[i], dp[j] + 1)
 
             longest = max(longest, dp[i])
 
-        return longest
+        return longest + 1
