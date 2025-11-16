@@ -1,27 +1,25 @@
 class Solution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
         """
-        Intuitive solution:
+        Greedy solution (from editorial):
 
-        First, sort intervals by start
-        init count = 0
-        for each pair of intervals i and i + 1, if they are overlapping, remove them and increment count
+        Sort intervals by ending times
+        Keeping track of the last end time we saw, compare the curr start time and last end time,
+            if current interval doesn't overlap with last one, then keep track of this interval's end time
+            else "remove" one interval bc they overlap
 
-        # Time: O(n log n) or O(n^2) bc of pop
+        # Time: O(n log n)
         # Space: O(n) bc sorting in Python
         """
-        intervals.sort()
-
+        intervals.sort(key=lambda interval: interval[1])
+        
         removed = 0
-        i = 0
+        last_end_time = -inf
 
-        while i + 1 < len(intervals):
-            curr, next = intervals[i], intervals[i + 1]
-
-            if max(curr[0], next[0]) < min(curr[1], next[1]):
-                intervals.pop(i + 1)
+        for start, end in intervals:
+            if start >= last_end_time:  # current interval doesn't overlap, can keep it for free
+                last_end_time = end
+            else:  # overlaps, "remove" it
                 removed += 1
-            else:
-                i += 1
-            
+
         return removed
