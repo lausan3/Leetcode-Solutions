@@ -1,34 +1,36 @@
 class Solution:
-    """
-    Brute force O(n):
+    def minAreaRect(self, points: List[List[int]]) -> int:
+        """
+        Brute Force Solution:
+        
+        maintain one hash map representing points along a given vertical line intersecting with the x-axis
+        
+        for each pair of columns (x1, y1), (x1, y2) and (x2, y1), (x2, y2), check for the smallest rectangle of these points
+        """
+        x_intersects = {}  # line centered at x : points on that line
 
-    Linearly search for the place to insert the interval
-        1. Insert intervals where not not overlapped
-        2. Insert new intervals and fix overlaps
-        3. Insert remaining intervals
+        for x, y in points:
+            if x not in x_intersects:
+                x_intersects[x] = []
 
-    Time: O(n)          l
-    Space: O(n)
-    """
-    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
-        n = len(intervals)
-        res = []
-        new_start, new_end = newInterval
-        i = 0
+            x_intersects[x].append(y)
 
-        while i < n and intervals[i][1] < new_start:
-            res.append(intervals[i])
-            i += 1
+        seen = {}
+        ans = float('inf')
 
-        while i < n and max(intervals[i][0], new_start) <= min(intervals[i][1], new_end):
-            newInterval[0] = min(newInterval[0], intervals[i][0])
-            newInterval[1] = max(newInterval[1], intervals[i][1])
-            i += 1
+        for x, intersect in sorted(x_intersects.items()):
+            intersect.sort()
 
-        res.append(newInterval)
+            # for each pair of points, calculate the area
+            # in reverse so (y2 - y1) is positive when intersect is sorted
+            for j, y2 in enumerate(intersect):
+                for i in range(j):
+                    y1 = intersect[i]
 
-        while i < n:
-            res.append(intervals[i])
-            i += 1
+                    if (y1, y2) in seen:
+                        area = (x - seen[y1,y2]) * (y2 - y1)
+                        ans = min(ans, area)
 
-        return res
+                    seen[y1, y2] = x
+        
+        return ans if ans < float('inf') else 0
