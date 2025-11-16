@@ -2,22 +2,22 @@ class Solution:
 
     def __init__(self, w: List[int]):
         n = len(w)
-        total = sum(w)
+        self.total = sum(w)
 
 
         self.probs = []
 
         acc = 0
         for weight in w:
-            acc += weight / total
+            acc += weight
             self.probs.append(acc)
 
     def pickIndex(self) -> int:
-        prob = random.uniform(0.0, 100.0)
+        prob = random.random() * self.total
 
-        i = bisect.bisect_left(self.probs, prob)
+        i = bisect.bisect(self.probs, prob)
 
-        return i - 1
+        return i
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(w)
