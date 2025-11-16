@@ -18,7 +18,7 @@ class Solution:
 
         overlap_amt = 0
 
-        for count in overlaps.values()
+        for count in overlaps.values():
             overlap_amt += count
 
             if overlap_amt > 1:
