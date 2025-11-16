@@ -23,9 +23,9 @@ class Solution:
         total = 0
         # count number of lines/point pairs for each y
         for _, count in y_to_points.items():
-            lines = count * (count - 1) // 2
-            
-            res = (res + total * lines) % MOD
+            lines = count * (count - 1) // 2  # n choose 2
+
+            res = (res + total * lines) % MOD  # total * lines is total pairs choosing pairs from this intercept
             total = (total + lines) % MOD
         
         return res
