@@ -1,4 +1,4 @@
-<h3><a href=https://leetcode.com/problems/alien-dictionary/>Alien Dictionary</a></h3>
+<h3><a href=https://leetcode.com/problems/alien-dictionary/editorial/>Alien Dictionary</a></h3>
 <p><p>There is a new alien language that uses the English alphabet. However, the order of the letters is unknown to you.</p>
 
 <p>You are given a list of strings <code>words</code> from the alien language's dictionary. Now it is claimed that the strings in <code>words</code> are <span data-keyword="lexicographically-smaller-string-alien" class=" cursor-pointer relative text-dark-blue-s text-sm"><button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r1k:" data-state="closed" class=""><strong>sorted lexicographically</strong></button></span> by the rules of this new language.</p>

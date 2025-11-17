@@ -10,10 +10,17 @@ class Solution:
          unreachable letters.
 
         Therefore, the intuitive approach would be to perform topological sort on the graph of letters in the word list.
+
+        Time: O(C) where C = length of all words appended to each other. comes from first Zip func since we are testing words
+         one after another.
+
+        Space: O(U + min(U^2, N)) where U is the number of unique letters (constrained to 26 in the description), and N is 
+         the number of words.
         """
         letters = collections.defaultdict(set)
         inbound = Counter({a: 0 for word in words for a in word })
 
+        # O(C)
         for word1, word2 in zip(words, words[1:]):
             # the key here is that since the words are claimed to be lexicographically sorted, we only care about where
             #  the letters first differ and hence that's where our edges come from.
