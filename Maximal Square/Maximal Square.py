@@ -21,9 +21,10 @@ class Solution:
                 if matrix[r][c] == "0":
                     continue
 
-                if r <= 0 or c <= 0:
+                if r == 0 or c == 0:
                     dp[r][c] = 1
                     max_sides = max(max_sides, 1)
+                    continue
 
                 left = int(matrix[r][c - 1])
                 top = int(matrix[r - 1][c])
