@@ -15,6 +15,8 @@ class Solution:
         inbound = Counter({a: 0 for word in words for a in word })
 
         for word1, word2 in zip(words, words[1:]):
+            # the key here is that since the words are claimed to be lexicographically sorted, we only care about where
+            #  the letters first differ and hence that's where our edges come from.
             for a, b in zip(word1, word2):
                 if a != b:
                     if b not in letters[a]:
@@ -23,7 +25,7 @@ class Solution:
                         inbound[b] = inbound.get(b, 0) + 1
 
                     break
-            else:  # check that second word isn't a prefix of the first word
+            else:  # check that second word isn't a prefix of the first word, since prefixes should always come first.
                 if len(word2) < len(word1):
                     return ""
 
@@ -43,8 +45,5 @@ class Solution:
 
                 if inbound[after] == 0:
                     q.append(after)
-
-        if len(order) < len(inbound):
-            return ""
         
-        return order
+        return order if len(order) == len(inbound) else ""
