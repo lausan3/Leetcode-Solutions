@@ -1,14 +1,21 @@
 class Solution:
     def kLengthApart(self, nums: List[int], k: int) -> bool:
-        curr_spaces_away = -1
+        n = len(nums)
+        l = r = 0
 
-        for num in nums:
-            if num == 1:
-                if curr_spaces_away > -1 and curr_spaces_away < k:
+        while l < n and r < n:
+            while l < n and nums[l] != 1:
+                l += 1
+            
+            r = l + 1
+
+            while r < n and nums[r] != 1:
+                r += 1
+            
+            if l < n and r < n and nums[l] == 1 and nums[r] == 1:
+                if r - l - 1 < k:
                     return False
-
-                curr_spaces_away = 0
-            else:
-                curr_spaces_away += 1
+                else:
+                    l = r
 
         return True
