@@ -8,4 +8,4 @@ class Solution:
             if indegree[end] > 1:
                 return False
 
-        return True
+        return sum(indegree) == n - 1
