@@ -1,6 +1,7 @@
 class Solution:
     def isOneBitCharacter(self, bits: List[int]) -> bool:
-        if len(bits) == 1:
-            return True
-            
-        return bits[-2] == 0
+        i = 0
+        while i < len(bits) - 1:
+            i += bits[i] + 1  # skip 
+        
+        return i == len(bits) - 1
