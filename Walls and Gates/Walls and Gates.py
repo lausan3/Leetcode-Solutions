@@ -12,8 +12,8 @@ class Solution:
             For each direction that it can go in,
                 append to queue its row, col, and curr distance + 1
 
-        Time: O(4^n) where n = number of gates
-        Space: O(4^n)
+        Time: O(m*n)
+        Space: O(m*n)
         """
         m = len(rooms)
         n = len(rooms[0])
