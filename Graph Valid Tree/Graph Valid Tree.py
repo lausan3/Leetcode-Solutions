@@ -1,11 +1,25 @@
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        indegree = [0] * n
+        if len(edges) != n - 1:
+            return False
 
-        for _, end in edges:
-            indegree[end] += 1
+        adj = [[] for _ in range(n)]
 
-            if indegree[end] > 1:
-                return False
+        for start, end in edges:
+            adj[start].append(end)
+            adj[end].append(start)
 
-        return sum(indegree) == n - 1
+        q = deque([0])
+        seen = set()
+
+        while q:
+            node = q.popleft()
+
+            for neighbor in adj[node]:
+                if neighbor in seen:
+                    continue
+
+                seen.add(neighbor)
+                q.append(neighbor)
+
+        return len(seen) == n
