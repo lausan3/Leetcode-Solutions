@@ -5,4 +5,7 @@ class Solution:
         for _, end in edges:
             indegree[end] += 1
 
-        return sum(indegree) == n - 1
+            if indegree[end] > 1:
+                return False
+
+        return True
