@@ -10,7 +10,7 @@ class Solution:
             adj[end].append(start)
 
         q = deque([0])
-        seen = set()
+        seen = set([0])
 
         while q:
             node = q.popleft()
