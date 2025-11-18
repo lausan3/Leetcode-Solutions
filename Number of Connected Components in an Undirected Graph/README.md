@@ -1,4 +1,4 @@
-<h3><a href=https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/>Number of Connected Components in an Undirected Graph</a></h3>
+<h3><a href=https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/editorial/>Number of Connected Components in an Undirected Graph</a></h3>
 <p><p>You have a graph of <code>n</code> nodes. You are given an integer <code>n</code> and an array <code>edges</code> where <code>edges[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> indicates that there is an edge between <code>a<sub>i</sub></code> and <code>b<sub>i</sub></code> in the graph.</p>
 
 <p>Return <em>the number of connected components in the graph</em>.</p>
