@@ -1,4 +1,4 @@
-<h3><a href=https://leetcode.com/problems/1-bit-and-2-bit-characters/?envType=daily-question&envId=2025-11-18>1-bit and 2-bit Characters</a></h3>
+<h3><a href=https://leetcode.com/problems/1-bit-and-2-bit-characters/description/?envType=daily-question&envId=2025-11-18>1-bit and 2-bit Characters</a></h3>
 <p><p>We have two special characters:</p>
 
 <ul>
