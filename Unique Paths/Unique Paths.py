@@ -1,13 +1,10 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        @cache
-        def recurse(r, c):
-            if r >= m or c >= n:
-                return 0
+        dp = [[1 for _ in range(n)] for _ in range(m)]
 
-            if r == m - 1 and c == n - 1:
-                return 1
+        for i in range(1, m):
+            for j in range(1, n):
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
 
-            return recurse(r+1,c) + recurse(r,c+1)
-
-        return recurse(0,0)
+        return dp[m - 1][n - 1]
+                
