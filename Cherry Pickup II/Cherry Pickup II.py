@@ -14,6 +14,9 @@ class Solution:
         2. We move up from the last row for this approach.
         3. Every time the robots move up, they check their possible three paths below them for the max.
         4. Then we return dp[0][0][n-1] (their starting states)
+
+        Time: O(MN^2)
+        Space: O(MN^2)
         """
         m = len(grid)
         n = len(grid[0])
