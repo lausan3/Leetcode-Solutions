@@ -1,7 +1,5 @@
 class Solution:
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
-        class Solution:
-    def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
         """
         Note: Thinking about a DP solution similar to maximum plus size?
         
