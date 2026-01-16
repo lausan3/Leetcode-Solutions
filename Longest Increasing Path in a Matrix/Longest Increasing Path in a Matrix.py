@@ -1,15 +1,15 @@
 class Solution:
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
         """
-        Note: Thinking about a DP solution similar to maximum plus size?
-        
-        Simple DFS Solution (TLE):
+        Top Down DP Solution:
         
         For each cell, return longest increasing path in the matrix
         from this cell
+
+        If you don't add memo table, you get TLE
         
-        
-        Space: O(n * m)
+        Time: O(mn)
+        Space: O(mn)
         """
         m = len(matrix)
         n = len(matrix[0])
@@ -19,30 +19,27 @@ class Solution:
             (0, 1),
             (0, -1)
         ]
-        visited = set()
+        dp = [[0 for _ in range(n)] for _ in range(m)]
         
-        def dfs(r, c, path_len) -> int:
-            if (0 > r >= m or
-                0 > c >= n):
-                return path_len
-            
-            visited.add((r, c))
-            max_path_len = path_len
-            
+        def dfs(r, c) -> int:
+            if dp[r][c] != 0:
+                return dp[r][c]
+
             for dx, dy in dirs:
                 new_r, new_c = r + dx, c + dy
                 if (0 <= new_r < m and
                     0 <= new_c < n and
                     matrix[new_r][new_c] > matrix[r][c]
                    ):
-                    max_path_len = max(max_path_len, dfs(new_r, new_c, path_len + 1))
-                    
-            visited.remove((r, c))
-            return max_path_len
+                    dp[r][c] = max(dp[r][c], dfs(new_r, new_c))
+            
+            dp[r][c] += 1
+            return dp[r][c]
         
-        res = 1
+        res = 0
         for r in range(m):
             for c in range(n):
-                res = max(res, dfs(r, c, 1))
+                res = max(res, dfs(r, c))
                 
         return res
+        
