@@ -15,10 +15,14 @@ class Solution:
         Space: O(numRows * n)
         """
         n = len(s)
+
+        if numRows == 1:
+            return s
+
         letters = list(s)[::-1]
         zigzag = [ [None for _ in range(n)] for _ in range(numRows) ]
         r = c = 0
-        down_row_index = max(1, numRows - 1)
+        down_row_index = numRows - 1
 
         while letters:
             letter = letters.pop()
