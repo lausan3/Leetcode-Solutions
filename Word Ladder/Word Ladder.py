@@ -59,4 +59,4 @@ class Solution:
                 q.append( (next_word, path_len + 1) )
                 print(f"to {next_word}")
 
-        return min_transforms
+        return min_transforms if min_transforms != float('inf') else 0
