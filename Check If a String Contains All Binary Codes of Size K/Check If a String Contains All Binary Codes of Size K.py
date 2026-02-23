@@ -14,7 +14,7 @@ class Solution:
         # join all tuples
         combos = set(map(lambda x: ''.join(x), combos))
 
-        for i in range(len(s) - k):
+        for i in range(len(s) - k + 1):
             substr = s[i:i + k]
 
             if substr in combos:
